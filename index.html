@@ -772,8 +772,10 @@ EXPLORA = EXPLORE + "address/";
 TVLGURU = "0x0786c3a78f5133f08c1c70953b8b10376bc6dcad";
 NATIVE = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 NATIVE_NAME = "FTM";
+NATIVE_LOGO = "https://ftm.guru/icons/ftm.svg";
 SWTOKEN = "0xc8D156E481E6aEBF0E7DEA1EbA6bcAe96366FA70";
 SWTOKEN_NAME = "msFTM";
+SWTOKEN_LOGO = "https://ftm.guru/icons/lockless.svg";
 
 
 function $(_) {return document.getElementById(_);}
@@ -1004,7 +1006,7 @@ async function mint() {
 	console.log(_tw)
 	notice(`
 		<h3>Order Completed!</h3>
-		<img style='height:20px;position:relative;top:4px' src="${WRAPLOGO}"> Minted <b>${fornum(_oamt,18)}</b> ${SWTOKEN_NAME}
+		<img style='height:20px;position:relative;top:4px' src="${SWTOKEN_LOGO}"> Minted <b>${fornum(_oamt,18)}</b> ${SWTOKEN_NAME}
 		<br><br>
 		<h4><a target="_blank" href="${EXPLORE}/tx/${_tr.hash}">View on Explorer</a></h4>
 	`);
