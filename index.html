@@ -1,7 +1,7 @@
 <!doctype html><html><meta charset="UTF-8">
 <head>
-	<title>Mint msFTM | FTM Liquid-Staked via Millenium Club</title>
-	<meta name="description" content="Mint msFTM | FTM Liquid-Staked via Millenium Club!">
+	<title>Mint mFTM | FTM Liquid-Staked via Millenium Club</title>
+	<meta name="description" content="Mint mFTM | FTM Liquid-Staked via Millenium Club!">
 	<meta name="keywords" content="Lockless Protocol,Millenium Club, Guru Network, Decentralized Finance, Kava, Liquid Staking, 1337, defi, farming, FTM1337">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" href="https://ftm.guru/icons/lockless.svg">
@@ -645,7 +645,7 @@ img.bigthumb {
 				<img src="https://ftm.guru/icons/lockless.svg" style="vertical-align: middle;" height="32px">
 			</a>
 			<a href="https://eliteness.network">
-				msFTM
+				mFTM
 			</a>
 		</div>
 		<div align="right">
@@ -667,7 +667,7 @@ img.bigthumb {
 
 
 	<div class="partnership">
-		<h1 id="a-trade"><span style="font-size:3em">msFTM</span></h1>
+		<h1 id="a-trade"><span style="font-size:3em">mFTM</span></h1>
 		<h2>Unleash Liquid-Staked FTM with Millenium Club</h2>
 	</div>
 	<br>
@@ -689,11 +689,11 @@ img.bigthumb {
 			</div>
 		</div>
 		<div style="margin-top: -25px;" align="center">
-			<button class="submit equal-gradient" onclick="mint()"><span id="claim-offer">Mint msFTM</span></button>
+			<button class="submit equal-gradient" onclick="mint()"><span id="claim-offer">Mint mFTM</span></button>
 			<br><br>
 		</div>
 		<div align="center" id="amount-swtoken-balance" style="font-family:light">
-		Current Balance: 0.00 msFTM
+		Current Balance: 0.00 mFTM
 		</div>
 	</div>
 	<div class="analytics" style="display:none">
@@ -789,7 +789,7 @@ NATIVE = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 NATIVE_NAME = "FTM";
 NATIVE_LOGO = "https://ftm.guru/icons/ftm.svg";
 SWTOKEN = "0x62227c75908b7d358a9d70ea4670f57f8b012ccc";
-SWTOKEN_NAME = "msFTM";
+SWTOKEN_NAME = "mFTM";
 SWTOKEN_LOGO = "https://ftm.guru/icons/lockless.svg";
 SWTOKEN_MINTER = "0x860dbaf5ff20664407df16896d7f2a0fb3fd6a51";
 
@@ -956,7 +956,8 @@ function fornum2(n,d)
 	else if(_n>1e9){n_=(_n/1e9).toFixed(2)+" Billion"}
 	else if(_n>1e6){n_=(_n/1e6).toFixed(2)+" Million"}
 	else if(_n>1e3){n_=(_n/1e3).toFixed(2)+" Thousand"}
-	else if(_n>1){n_=(_n/1e0).toFixed(8)+""}
+	else if(_n>1e0){n_=(_n/1e0).toFixed(4)+""}
+	else if(_n>0){n_=(_n).toFixed(8)+""}
 	return(n_);
 }
 
@@ -975,7 +976,7 @@ async function dexstats() {
 		_TVLGURU_.coinusd(),
 		_SWTOKEN_.totalSupply()
 	])
-	$("tvl-usd").innerHTML = "TVL: $" + (Number(_ds[0])/1e18 * Number(_ds[1])/1e18).toLocaleString();
+	$("tvl-usd").innerHTML = "TVL: $" + (Number(_ds[0])/1e18 * Number(_ds[1])/1e18).toLocaleString(undefined,{maximumFractionDigits:2});
 
 }
 
@@ -985,8 +986,8 @@ async function gubs() {
 		provider.getBalance(window.ethereum.selectedAddress),
 		_SWTOKEN_.balanceOf(window.ethereum.selectedAddress)
 	]);
-	$("amount-sold-balance").innerHTML = (Number(_ubs[0])/1e18).toLocaleString() + " " + NATIVE_NAME + " available";
-	$("amount-swtoken-balance").innerHTML = "Current Balance: " + (Number(_ubs[0])/1e18).toLocaleString() + " " + SWTOKEN_NAME;
+	$("amount-sold-balance").innerHTML = (Number(_ubs[0])/1e18).toLocaleString(undefined,{maximumFractionDigits:2}) + " " + NATIVE_NAME + " available";
+	$("amount-swtoken-balance").innerHTML = "Current Balance: " + (Number(_ubs[1])/1e18).toLocaleString(undefined,{maximumFractionDigits:2}) + " " + SWTOKEN_NAME;
 }
 
 async function quote() {
