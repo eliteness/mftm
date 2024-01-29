@@ -788,9 +788,10 @@ TVLGURU = "0x0786c3a78f5133f08c1c70953b8b10376bc6dcad";
 NATIVE = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 NATIVE_NAME = "FTM";
 NATIVE_LOGO = "https://ftm.guru/icons/ftm.svg";
-SWTOKEN = "0xc8D156E481E6aEBF0E7DEA1EbA6bcAe96366FA70";
+SWTOKEN = "0x62227c75908b7d358a9d70ea4670f57f8b012ccc";
 SWTOKEN_NAME = "msFTM";
 SWTOKEN_LOGO = "https://ftm.guru/icons/lockless.svg";
+SWTOKEN_MINTER = "0x860dbaf5ff20664407df16896d7f2a0fb3fd6a51";
 
 
 function $(_) {return document.getElementById(_);}
@@ -1007,7 +1008,7 @@ async function mint() {
 
 		<h4><u><i>Please Confirm this transaction in your wallet!</i></u></h4>
 	`);
-	let _tr = await signer.sendTransaction({from:window.ethereum.selectedAddress, to:SWTOKEN, value: _oamt});
+	let _tr = await signer.sendTransaction({from:window.ethereum.selectedAddress, to:SWTOKEN_MINTER, value: _oamt});
 	console.log(_tr);
 	notice(`
 		<h3>Order Submitted!</h3>
